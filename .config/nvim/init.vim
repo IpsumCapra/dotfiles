@@ -1,19 +1,26 @@
+" Set options
 set nu
 set termguicolors
+set completeopt=menu,menuone,noselect 
+
+" Colors
 highlight clear SignColumn
+
 highlight GitSignsChange guibg=clear guifg=#ffb86c
 highlight GitSignsDelete guibg=clear guifg=#ff5555
 highlight GitSignsAdd guibg=clear guifg=#50fa7b
+
 highlight LineNr guibg=clear guifg=#38393f
+
 highlight TabLine guibg=#38393f guifg=white
 highlight TabLineSel guibg=#282a36 guifg=white
 highlight clear TabLineFill
 highlight TabLineFill guibg=#38393f
+
 highlight Pmenu guibg=#282a36 guifg=white
 highlight PmenuSel guibg=#38393f guifg=white
 
-set completeopt=menu,menuone,noselect 
-
+" Plugs
 call plug#begin()
 
 Plug 'glepnir/galaxyline.nvim' , { 'branch': 'main' }
