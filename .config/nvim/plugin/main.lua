@@ -11,6 +11,12 @@ require('nvim-tree').setup({
       show = {
         git = true,
       },
+      glyphs = {
+	git = {
+          unstaged = " ",
+	  staged =  " ",
+	},
+      },
     },
   },
 })
