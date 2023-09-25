@@ -5,6 +5,7 @@ set completeopt=menu,menuone,noselect
 
 " Colors
 hi clear SignColumn
+hi Normal guibg=#300A24
 
 " Git
 hi GitSignsChange guibg=clear guifg=#ffb86c
