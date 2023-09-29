@@ -3,6 +3,12 @@ set nu
 set termguicolors
 set completeopt=menu,menuone,noselect 
 
+" Tab options
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
+
 " Colors
 hi clear SignColumn
 hi Normal guibg=#300A24
