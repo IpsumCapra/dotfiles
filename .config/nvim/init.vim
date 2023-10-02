@@ -56,17 +56,45 @@ hi NvimTreeGitDeleted guifg=#ff5555
 
 hi NvimTreeFolderName guifg=lightblue
 
+" BarBar
+hi BufferCurrentMod guifg=#ffb86c
+hi BufferCurrentSignRight guifg=#38393f
+
+hi BufferVisibleMod guibg=#1e1e21 guifg=#ffb86c 
+hi BufferInactiveMod guibg=#1e1e21 guifg=#ffb86c 
+hi BufferInactiveSign guibg=#1e1e21 guifg=#38393f
+hi BufferInactiveSignRight guibg=#1e1e21 guifg=#38393f
+
+" Diffview
+hi DiffviewNormal guibg=#1e1e21
+
+hi DiffviewDiffText guibg=#b5814a
+
+hi DiffviewDiffAdd guibg=#237036
+hi DiffviewDiffChange guibg=#82572a
+hi DiffviewDiffDelete guibg=#782525 guifg=#a33434 
+
+hi DiffviewFolderName guifg=lightblue
+hi DiffviewFolderSign guifg=#8094b4
+
 " Plugs
 call plug#begin()
 
 Plug 'glepnir/galaxyline.nvim' , { 'branch': 'main' }
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'lewis6991/gitsigns.nvim'
+Plug 'romgrk/barbar.nvim'
 
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'sindrets/diffview.nvim'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
+
+Plug 'puremourning/vimspector'
 
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
