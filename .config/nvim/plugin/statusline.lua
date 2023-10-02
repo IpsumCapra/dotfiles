@@ -1,4 +1,3 @@
-local vim = vim
 local gl = require('galaxyline')
 local condition = require("galaxyline.condition")
 
@@ -6,7 +5,7 @@ local gls = gl.section
 
 -- Colors
 local colors = {
-  bg = '#282a36',
+  bg = '#242429',
   fg = '#f8f8f2',
   section_bg = '#38393f',
   yellow = '#f1fa8c',
