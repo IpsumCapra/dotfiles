@@ -8,6 +8,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set smarttab
+set cursorline
+
+let g:vimspector_enable_mappings = 'HUMAN'
 
 " Colors
 hi clear SignColumn
