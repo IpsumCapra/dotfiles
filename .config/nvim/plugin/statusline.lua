@@ -50,6 +50,7 @@ gls.left[1] = {
         R = 'REPLACE'
       }
       vim.api.nvim_command('hi GalaxyViMode guibg=' .. mode_color())
+      vim.api.nvim_command('hi BufferCurrentSign guifg=' .. mode_color())
       local alias_mode = alias[vim.fn.mode()]
       if alias_mode == nil then alias_mode = vim.fn.mode() end
       return "  " .. alias_mode .. " "
