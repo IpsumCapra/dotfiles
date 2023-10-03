@@ -12,7 +12,12 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+
+
 lspconfig.omnisharp.setup {
+  handlers = {
+    ["textDocument/definition"] = require('omnisharp_extended').handler,
+  },
   cmd = { '/home/otacon/.local/share/omnisharp/OmniSharp', '--languageserver', '--hostPID', tostring(vim.fn.getpid()) },
   capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", "project.json"),
