@@ -89,10 +89,14 @@ gls.left[5] = {
     provider = function()
       local vcs = require('galaxyline.provider_vcs')
       local branch_name = vcs.get_git_branch()
-      if (string.len(branch_name) > 28) then
-        return string.sub(branch_name, 1, 25) .. "..."
+      if branch_name ~= nil then
+        if (string.len(branch_name) > 28) then
+          return string.sub(branch_name, 1, 25) .. "..."
+        end
+        return branch_name .. " "
+      else
+        return ""
       end
-      return branch_name .. " "
     end,
     condition = condition.check_git_workspace,
     highlight = {colors.fg, colors.bg}
