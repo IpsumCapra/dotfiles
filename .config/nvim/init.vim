@@ -103,6 +103,8 @@ Plug 'romgrk/barbar.nvim'
 
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'sindrets/diffview.nvim'
+Plug 'tpope/vim-fugitive'
+
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
