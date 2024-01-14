@@ -7,3 +7,21 @@ vim.diagnostic.config({
 
 
 require('gitsigns').setup()
+
+vim.opt.list = true
+vim.opt.listchars:append {
+  lead="·",
+  eol = "↴",
+  extends = "›",
+  precedes = "‹",
+  nbsp = "·",
+  trail = "·",
+}
+
+require('ibl').setup ()
+
+require('nvim-treesitter.configs').setup {
+  highlight = {
+    enable = true,
+  }
+}
