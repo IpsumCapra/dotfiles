@@ -4,7 +4,7 @@ local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'ghdl_ls', 'lua_ls' }
+local servers = { 'ghdl_ls', 'lua_ls', 'tsserver' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
@@ -12,7 +12,9 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-
+lspconfig.terraformls.setup {
+  filetypes = {'tf', 'terraform', 'tfvars', 'terraform-vars'}
+}
 
 lspconfig.omnisharp.setup {
   handlers = {
