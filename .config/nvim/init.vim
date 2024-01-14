@@ -1,7 +1,11 @@
 " Set options
 set nu
 set termguicolors
-set completeopt=menu,menuone,noselect 
+set completeopt=menu,menuone,noselect
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable
 
 " Tab options
 set tabstop=2
@@ -11,6 +15,12 @@ set smarttab
 set cursorline
 
 let g:vimspector_enable_mappings = 'HUMAN'
+
+" Indent
+hi IblIndent guibg=clear guifg=#38393f
+hi IblWhitespace guibg=clear guifg=#38393f
+hi IblScope guibg=clear guifg=darkgrey
+hi NonText guibg=clear guifg=#38393f
 
 " Colors
 hi clear SignColumn
@@ -100,6 +110,7 @@ Plug 'glepnir/galaxyline.nvim' , { 'branch': 'main' }
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'sindrets/diffview.nvim'
@@ -118,5 +129,6 @@ Plug 'hoffs/omnisharp-extended-lsp.nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
