@@ -103,6 +103,13 @@ hi DiffviewDiffDelete guibg=#782525 guifg=#a33434
 hi DiffviewFolderName guifg=lightblue
 hi DiffviewFolderSign guifg=#8094b4
 
+" Telescope
+hi TelescopeResultsNormal guifg=darkgrey
+hi TelescopeBorder guifg=darkgrey
+hi TelescopeSelection guifg=white guibg=#293559
+hi TelescopeSelectionCaret guifg=white guibg=#293559
+hi TelescopePreviewLine guibg=#293559
+
 " Plugs
 call plug#begin()
 
@@ -130,5 +137,9 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
 call plug#end()

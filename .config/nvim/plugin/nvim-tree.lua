@@ -23,7 +23,7 @@ vim.keymap.set('n', '<C-b>', function()
     require'nvim-tree.api'.tree.close()
     require'barbar.api'.set_offset(0)
   else
-    require'barbar.api'.set_offset(30, 'File Explorer')
+    require'barbar.api'.set_offset(30, '󰉓  File Explorer')
     require'nvim-tree.api'.tree.open()
   end
 end)

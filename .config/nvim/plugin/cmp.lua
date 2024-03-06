@@ -22,7 +22,14 @@ cmp.setup {
       },
     }),
     window = {
-      documentation = cmp.config.window.bordered()
+      completion = {
+        border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+        winhighlight = 'Normal:CmpPmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+      },
+      documentation = {
+        border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+        winhighlight = 'Normal:CmpPmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+      },
     },
     sources = {
       { name = 'nvim_lsp' },

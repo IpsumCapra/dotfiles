@@ -4,12 +4,12 @@ vim.keymap.set('n', '<C-k>', function()
     local branch_name = vcs.get_git_branch()
     if branch_name ~= nil then
       vim.cmd('DiffviewOpen')
-      require'barbar.api'.set_offset(35, 'Version Control')
+      require'barbar.api'.set_offset(35, '  Version Control')
     end
   else
     vim.cmd('DiffviewClose')
     if require('nvim-tree.view').is_visible() then
-      require'barbar.api'.set_offset(30, 'File Explorer')
+      require'barbar.api'.set_offset(30, '󰉓  File Explorer')
     else
       require'barbar.api'.set_offset(0)
     end
