@@ -110,6 +110,10 @@ hi TelescopeSelection guifg=white guibg=#293559
 hi TelescopeSelectionCaret guifg=white guibg=#293559
 hi TelescopePreviewLine guibg=#293559
 
+" Alpha
+hi AlphaButtons guifg=darkgrey
+hi AlphaHeader guifg=#ff5555
+
 " Plugs
 call plug#begin()
 
@@ -141,5 +145,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+
+Plug 'goolord/alpha-nvim'
 
 call plug#end()
