@@ -43,5 +43,14 @@ dashboard.section.footer.opts.hl = 'AlphaHeader'
 
 require('alpha').setup(dashboard.opts)
 
-vim.cmd [[ au BufDelete * if empty(filter(tabpagebuflist(), 'stridx(bufname(v:val), "NvimTree") == -1 && !buflisted(v:val)')) | exec "Alpha" | endif ]]
+local function alpha_autocmd()
+  local bnum = #(require('barbar.state').get_buffer_list())
 
+  if bnum <= 2 and bnum >= 1 then
+    if bnum ~= 2 or vim.api.nvim_buf_get_name(require('barbar.state').get_buffer_list()[2]) == '' then
+      vim.cmd('exec "Alpha"')
+    end
+  end
+end
+
+vim.api.nvim_create_autocmd({'BufDelete'}, {callback = alpha_autocmd})
