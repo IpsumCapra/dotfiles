@@ -137,7 +137,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'puremourning/vimspector'
 Plug 'hoffs/omnisharp-extended-lsp.nvim'
 
-Plug 'L3MON4D3/LuaSnip'
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.2.0', 'do': 'make install_jsregexp'}
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
