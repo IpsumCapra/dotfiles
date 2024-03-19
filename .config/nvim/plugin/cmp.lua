@@ -3,6 +3,9 @@ local luasnip = require('luasnip')
 
 luasnip.config.setup {}
 
+vim.keymap.set({"s", "n"}, "<Tab>", function() luasnip.jump(1) end, {silent = true})
+vim.keymap.set({"s", "n"}, "<S-Tab>", function() luasnip.jump(-1) end, {silent = true})
+
 require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup {
@@ -16,7 +19,7 @@ cmp.setup {
       ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
       -- C-b (back) C-f (forward) for snippet placeholder navigation.
       ['<C-Space>'] = cmp.mapping.complete(),
-      ['<CR>'] = cmp.mapping.confirm {
+      ['<Tab>'] = cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       },
