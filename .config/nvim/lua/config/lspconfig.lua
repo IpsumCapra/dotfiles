@@ -1,30 +1,14 @@
--- Add additional capabilities supported by nvim-cmp
-local lspconfig = require('lspconfig')
+local lspconfig = require("lspconfig")
+require("mason").setup()
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local mlsp = require("mason-lspconfig")
+mlsp.setup()
+mlsp.setup_handlers({
+  function(server)
+    lspconfig[server].setup({})
+  end,
+})
 
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'ghdl_ls', 'lua_ls', 'tsserver', 'pyright' }
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    -- on_attach = my_custom_on_attach,
-    capabilities = capabilities,
-  }
-end
-
-lspconfig.terraformls.setup {
-  filetypes = {'tf', 'terraform', 'tfvars', 'terraform-vars'}
-}
-
-lspconfig.omnisharp.setup {
-  handlers = {
-    ["textDocument/definition"] = require('omnisharp_extended').handler,
-  },
-  cmd = { '/home/otacon/.local/share/omnisharp/OmniSharp', '--languageserver', '--hostPID', tostring(vim.fn.getpid()) },
-  capabilities = capabilities,
-  root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", "project.json"),
-}
--- lsp-config signs.
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
@@ -43,10 +27,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
     -- Jump to the definition
-    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+    bufmap('n', '<F12>', '<cmd>lua vim.lsp.buf.definition()<cr>')
 
     -- Jump to declaration
-    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+    bufmap('n', '<C-F12>', '<cmd>lua vim.lsp.buf.declaration()<cr>')
 
     -- Lists all the implementations for the symbol under the cursor
     bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
@@ -64,8 +48,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
 
     -- Selects a code action available at the current cursor position
-    bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-    bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+    bufmap('n', '<C-.>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+    bufmap('x', '<C-.>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
 
     -- Show diagnostics in a floating window
     bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
@@ -77,4 +61,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
   end
 })
-

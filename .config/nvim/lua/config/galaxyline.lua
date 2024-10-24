@@ -5,9 +5,9 @@ local gls = gl.section
 
 -- Colors
 local colors = {
-  bg = '#242429',
-  fg = '#f8f8f2',
-  section_bg = '#38393f',
+  black = '#000000',
+  bg = string.format("#%06x", vim.api.nvim_get_hl_by_name("BufferVisible", true).background),
+  section_bg = string.format("#%06x", vim.api.nvim_get_hl_by_name("BufferInactive", true).background),
   yellow = '#f1fa8c',
   cyan = '#8be9fd',
   green = '#50fa7b',
@@ -55,9 +55,9 @@ gls.left[1] = {
       if alias_mode == nil then alias_mode = vim.fn.mode() end
       return "  " .. alias_mode .. " "
     end,
-    highlight = {colors.bg, colors.bg},
+    highlight = {colors.black},
     separator = " ",
-    separator_highlight = {colors.section_bg, colors.section_bg}
+    separator_highlight = "BufferInactive"
   }
 }
 gls.left[2] = {
@@ -81,7 +81,7 @@ gls.left[4] = {
   GitIcon = {
     provider = function() return ' ' end,
     condition = condition.check_git_workspace,
-    highlight = {colors.red, colors.bg}
+    highlight = {colors.red}
   }
 }
 gls.left[5] = {
@@ -99,7 +99,7 @@ gls.left[5] = {
       end
     end,
     condition = condition.check_git_workspace,
-    highlight = {colors.fg, colors.bg}
+    highlight = {colors.fg}
   }
 }
 gls.left[6] = {
@@ -107,7 +107,7 @@ gls.left[6] = {
     provider = 'DiffAdd',
     condition = condition.check_git_workspace,
     icon = ' ',
-    highlight = {colors.green, colors.bg}
+    highlight = {colors.green}
   }
 }
 gls.left[7] = {
@@ -115,7 +115,7 @@ gls.left[7] = {
     provider = 'DiffModified',
     condition = condition.check_git_workspace,
     icon = ' ',
-    highlight = {colors.orange, colors.bg}
+    highlight = {colors.orange}
   }
 }
 gls.left[8] = {
@@ -123,7 +123,7 @@ gls.left[8] = {
     provider = 'DiffRemove',
     condition = condition.check_git_workspace,
     icon = ' ',
-    highlight = {colors.red, colors.bg}
+    highlight = {colors.red}
   }
 }
 gls.left[9] = {
@@ -211,3 +211,4 @@ gls.short_line_right[1] = {
     separator_highlight = {colors.section_bg, colors.bg}
   }
 }
+
