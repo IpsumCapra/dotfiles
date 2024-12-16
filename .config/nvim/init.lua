@@ -10,6 +10,9 @@ require("config.telescope")
 -- Load nvim-cmp.
 require("config.nvim-cmp")
 
+-- Load neotest.
+require("config.neotest")
+
 -- Load options.
 require("config.options")
 
@@ -19,12 +22,8 @@ require("config.keymaps")
 -- Load colorscheme.
 require("config.colors")
 
--- Load neotest.
-require("config.neotest")
-
 -- Load galaxyline.
 require("config.galaxyline")
 
 -- Load alpha.
 require("config.alpha")
-

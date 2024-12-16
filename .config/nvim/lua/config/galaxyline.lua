@@ -3,11 +3,13 @@ local condition = require("galaxyline.condition")
 
 local gls = gl.section
 
+local tncolors = require("tokyonight.colors").styles.moon
+
 -- Colors
 local colors = {
   black = '#000000',
-  bg = string.format("#%06x", vim.api.nvim_get_hl_by_name("BufferVisible", true).background),
-  section_bg = string.format("#%06x", vim.api.nvim_get_hl_by_name("BufferInactive", true).background),
+  bg = tncolors.bg_dark,
+  section_bg = tncolors.bg_highlight,
   yellow = '#f1fa8c',
   cyan = '#8be9fd',
   green = '#50fa7b',
@@ -55,7 +57,7 @@ gls.left[1] = {
       if alias_mode == nil then alias_mode = vim.fn.mode() end
       return "  " .. alias_mode .. " "
     end,
-    highlight = {colors.black},
+    highlight = { colors.black },
     separator = " ",
     separator_highlight = "BufferInactive"
   }
@@ -72,16 +74,16 @@ gls.left[2] = {
 gls.left[3] = {
   FileName = {
     provider = 'FileName',
-    highlight = {colors.fg, colors.section_bg},
+    highlight = { colors.fg, colors.section_bg },
     separator = " ",
-    separator_highlight = {colors.section_bg, colors.bg}
+    separator_highlight = { colors.section_bg, colors.bg }
   }
 }
 gls.left[4] = {
   GitIcon = {
     provider = function() return ' ' end,
     condition = condition.check_git_workspace,
-    highlight = {colors.red}
+    highlight = { colors.red, colors.bg }
   }
 }
 gls.left[5] = {
@@ -99,7 +101,7 @@ gls.left[5] = {
       end
     end,
     condition = condition.check_git_workspace,
-    highlight = {colors.fg}
+    highlight = { colors.fg, colors.bg }
   }
 }
 gls.left[6] = {
@@ -107,7 +109,7 @@ gls.left[6] = {
     provider = 'DiffAdd',
     condition = condition.check_git_workspace,
     icon = ' ',
-    highlight = {colors.green}
+    highlight = { tncolors.git.add, colors.bg }
   }
 }
 gls.left[7] = {
@@ -115,7 +117,7 @@ gls.left[7] = {
     provider = 'DiffModified',
     condition = condition.check_git_workspace,
     icon = ' ',
-    highlight = {colors.orange}
+    highlight = { tncolors.git.change, colors.bg }
   }
 }
 gls.left[8] = {
@@ -123,55 +125,55 @@ gls.left[8] = {
     provider = 'DiffRemove',
     condition = condition.check_git_workspace,
     icon = ' ',
-    highlight = {colors.red}
+    highlight = { tncolors.git.delete, colors.bg }
   }
 }
 gls.left[9] = {
   LeftEnd = {
     provider = function() return ' █' end,
-    highlight = {colors.section_bg, colors.bg}
+    highlight = { colors.section_bg, colors.bg }
   }
 }
 gls.left[10] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
-    highlight = {colors.red, colors.section_bg}
+    highlight = { colors.red, colors.section_bg }
   }
 }
 gls.left[11] = {
   Space = {
     provider = function() return ' ' end,
-    highlight = {colors.section_bg, colors.section_bg}
+    highlight = { colors.section_bg, colors.section_bg }
   }
 }
 gls.left[12] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',
-    highlight = {colors.orange, colors.section_bg}
+    highlight = { colors.orange, colors.section_bg }
   }
 }
 gls.left[13] = {
   DiagnosticHint = {
     provider = 'DiagnosticHint',
     icon = '  ',
-    highlight = {colors.fg, colors.section_bg}
+    highlight = { colors.fg, colors.section_bg }
   }
 }
 gls.left[14] = {
   Space = {
     provider = function() return ' ' end,
-    highlight = {colors.section_bg, colors.section_bg}
+    highlight = { colors.section_bg, colors.section_bg }
   }
 }
 gls.left[15] = {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = '  ',
-    highlight = {colors.blue, colors.section_bg},
+    highlight = { colors.blue, colors.section_bg },
     separator = ' ',
-    separator_highlight = {colors.section_bg, colors.bg}
+    separator_highlight = { colors.section_bg, colors.bg }
   }
 }
 
@@ -179,9 +181,9 @@ gls.left[15] = {
 gls.right[1] = {
   FileFormat = {
     provider = function() return vim.bo.filetype end,
-    highlight = {colors.fg, colors.section_bg},
+    highlight = { colors.fg, colors.section_bg },
     separator = ' █',
-    separator_highlight = {colors.section_bg, colors.bg}
+    separator_highlight = { colors.section_bg, colors.bg }
   }
 }
 gls.right[2] = {
@@ -197,18 +199,17 @@ gls.right[2] = {
 gls.short_line_left[1] = {
   BufferType = {
     provider = 'FileTypeName',
-    highlight = {colors.fg, colors.section_bg},
+    highlight = { colors.fg, colors.section_bg },
     separator = ' ',
-    separator_highlight = {colors.section_bg, colors.bg}
+    separator_highlight = { colors.section_bg, colors.bg }
   }
 }
 
 gls.short_line_right[1] = {
   BufferIcon = {
     provider = 'BufferIcon',
-    highlight = {colors.yellow, colors.section_bg},
+    highlight = { colors.yellow, colors.section_bg },
     separator = ' █',
-    separator_highlight = {colors.section_bg, colors.bg}
+    separator_highlight = { colors.section_bg, colors.bg }
   }
 }
-
