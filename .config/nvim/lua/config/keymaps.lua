@@ -35,9 +35,6 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 -- nvim-tree.lua
 map('n', '<C-b>', ':NvimTreeToggle<CR>', opts)
 
--- nvim-tree.lua
-map('n', '<C-b>', ':NvimTreeToggle<CR>', opts)
-
 -- diffview.lua
 vim.keymap.set('n', '<C-k>', function()
   if next(require('diffview.lib').views) == nil then
@@ -57,9 +54,17 @@ map('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 map('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 map('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 map('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+map('n', '<leader>fs', builtin.lsp_dynamic_workspace_symbols, { desc = 'Workspace symbols' })
+map('n', '<leader>fr', builtin.lsp_references, { desc = 'Symbol references' })
 
 -- nvim-cmp
 local luasnip = require("luasnip")
-map({"s", "n"}, "<Tab>", function() luasnip.jump(1) end, opts)
-map({"s", "n"}, "<S-Tab>", function() luasnip.jump(-1) end, opts)
+map({ "s", "n" }, "<Tab>", function() luasnip.jump(1) end, opts)
+map({ "s", "n" }, "<S-Tab>", function() luasnip.jump(-1) end, opts)
 
+-- neotest
+local run = require("neotest").run.run
+map('n', '<leader>ts', "<Cmd>Neotest summary<CR>", opts)
+map('n', '<leader>tr', function() run() end, opts)
+map('n', '<leader>tf', function() run(vim.fn.expand("%")) end, opts)
+map('n', '<leader>td', function() run({ strategy = "dap" }) end, opts)
