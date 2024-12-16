@@ -9,6 +9,22 @@ mlsp.setup_handlers({
   end,
 })
 
+local registry = require("mason-registry")
+
+local packages = {
+  "eslint_d",
+  "prettier",
+}
+
+registry.refresh(function ()
+  for _, pkg_name in ipairs(packages) do
+    local pkg = registry.get_package(pkg_name)
+    if not pkg:is_installed() then
+      pkg:install()
+    end
+  end
+end)
+
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
@@ -48,8 +64,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
 
     -- Selects a code action available at the current cursor position
-    bufmap('n', '<C-.>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-    bufmap('x', '<C-.>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+    bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+    bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
 
     -- Show diagnostics in a floating window
     bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
@@ -61,3 +77,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
   end
 })
+
