@@ -5,6 +5,8 @@ vim.opt.shiftwidth = 2        -- Size of an indent
 vim.opt.expandtab = true      -- Use spaces instead of tabs
 vim.opt.smartindent = true    -- Smart indentation
 
+vim.opt.wrap = false
+
 vim.opt.cursorline = true
 
 vim.opt.mousemodel = "extend"
