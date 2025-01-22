@@ -68,3 +68,19 @@ map('n', '<leader>ts', "<Cmd>Neotest summary<CR>", opts)
 map('n', '<leader>tr', function() run() end, opts)
 map('n', '<leader>tf', function() run(vim.fn.expand("%")) end, opts)
 map('n', '<leader>td', function() run({ strategy = "dap" }) end, opts)
+
+
+-- nvim-dap(-ui)
+map('n', '<F5>', function() require("dap").continue() end, opts)
+map('n', '<F6>', function() require("dap").step_over() end, opts)
+map('n', '<F7>', function() require("dap").step_into() end, opts)
+map('n', '<F8>', function() require("dap").step_out() end, opts)
+
+map('n', '<leader>db', function() require("dap").toggle_breakpoint() end, opts)
+map('n', '<leader>dB', function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, opts)
+map('n', '<leader>dl', function() require("dap").set_breakpoint(nil, nil, vim.fn.input('Logpoint message: ')) end, opts)
+
+map('n', '<leader>dr', function() require("dap").repl_open() end, opts)
+map('n', '<leader>dR', function() require("dap").repl_run_last() end, opts)
+
+map('n', '<leader>dt', function() require("dapui").toggle() end, opts)

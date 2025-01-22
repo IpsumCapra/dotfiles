@@ -12,6 +12,7 @@ return
       json = { "prettier" },
       yaml = { "prettier" },
       markdown = { "prettier" },
+      cs = { "csharpier" },
     },
     format_on_save = {
       lsp_fallback = true,

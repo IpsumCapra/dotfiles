@@ -14,6 +14,7 @@ local registry = require("mason-registry")
 local packages = {
   "eslint_d",
   "prettier",
+  "csharpier",
 }
 
 registry.refresh(function ()

@@ -13,6 +13,9 @@ require("config.nvim-cmp")
 -- Load neotest.
 require("config.neotest")
 
+-- Load nvim-dap.
+require("config.nvim-dap")
+
 -- Load options.
 require("config.options")
 
