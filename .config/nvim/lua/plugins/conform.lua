@@ -13,11 +13,7 @@ return
       yaml = { "prettier" },
       markdown = { "prettier" },
       cs = { "csharpier" },
-    },
-    format_on_save = {
-      lsp_fallback = true,
-      async = false,
-      timeout_ms = 5000,
+      cpp = { "astyle" },
     },
   }
 }

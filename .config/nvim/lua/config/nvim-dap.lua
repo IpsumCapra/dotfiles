@@ -68,6 +68,12 @@ dap.adapters.coreclr = {
   args = { '--interpreter=vscode' }
 }
 
+dap.adapters.cppdbg = {
+  id = 'cppdbg',
+  type = 'executable',
+  command = vim.fn.stdpath('data') .. '/mason/bin/OpenDebugAD7',
+}
+
 dap.configurations.cs = {
   {
     type = "coreclr",
@@ -101,6 +107,40 @@ dap.configurations.cs = {
     pathFormat = "path",
     externalConsole = true
     -- console = "externalTerminal"
+  },
+}
+
+dap.configurations.cpp = {
+  {
+    name = "Launch file",
+    type = "cppdbg",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopAtEntry = true,
+  },
+  {
+    type = "cppdbg",
+    name = "Attach - cppdbg",
+    request = "attach",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    processId = require("dap.utils").pick_process,
+  },
+  {
+    name = 'Attach to gdbserver :1234',
+    type = 'cppdbg',
+    request = 'launch',
+    MIMode = 'gdb',
+    miDebuggerServerAddress = 'localhost:1234',
+    miDebuggerPath = '/usr/bin/gdb',
+    cwd = '${workspaceFolder}',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
   },
 }
 

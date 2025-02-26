@@ -4,6 +4,9 @@ require("config.lazy")
 -- Load lspconfig.
 require("config.lspconfig")
 
+-- Load lspconfig.
+require("config.conform")
+
 -- Load telescope.
 require("config.telescope")
 
