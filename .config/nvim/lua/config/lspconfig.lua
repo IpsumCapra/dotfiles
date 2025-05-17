@@ -1,13 +1,6 @@
 local lspconfig = require("lspconfig")
 require("mason").setup()
-
-local mlsp = require("mason-lspconfig")
-mlsp.setup()
-mlsp.setup_handlers({
-  function(server)
-    lspconfig[server].setup({})
-  end,
-})
+require("mason-lspconfig").setup()
 
 local registry = require("mason-registry")
 
