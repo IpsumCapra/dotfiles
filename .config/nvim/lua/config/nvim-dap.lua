@@ -74,6 +74,12 @@ dap.adapters.cppdbg = {
   command = vim.fn.stdpath('data') .. '/mason/bin/OpenDebugAD7',
 }
 
+dap.adapters.gdb = {
+  type = "executable",
+  command = "$GDB_MULTIARCH_DIR/gdb",
+  args = { "--interpreter=dap", "--data-directory=$GDB_MULTIARCH_DIR/data-directory", "--eval-command=set print pretty on" },
+}
+
 dap.configurations.cs = {
   {
     type = "coreclr",

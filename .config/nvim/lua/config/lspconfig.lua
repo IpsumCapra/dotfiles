@@ -10,7 +10,24 @@ local packages = {
   "csharpier",
 }
 
-registry.refresh(function ()
+vim.filetype.add({
+  extension = { ino = "cpp" },
+})
+
+vim.lsp.config.clangd = {
+  cmd = {
+    'clangd',
+    '--query-driver=$HOME/.arduino15/packages/**/bin/*g++',
+    '--query-driver=$HOME/.platformio/packages/**/bin/*g++',
+    '--background-index',
+    '--offset-encoding=utf-8',
+  },
+  root_markers = { '.clangd', 'compile_commands.json' },
+  filetypes = { 'c', 'cpp' },
+}
+vim.lsp.enable("clangd")
+
+registry.refresh(function()
   for _, pkg_name in ipairs(packages) do
     local pkg = registry.get_package(pkg_name)
     if not pkg:is_installed() then
@@ -29,7 +46,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function()
     local bufmap = function(mode, lhs, rhs)
-      local opts = {buffer = true}
+      local opts = { buffer = true }
       vim.keymap.set(mode, lhs, rhs, opts)
     end
 
@@ -48,7 +65,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Jumps to the definition of the type symbol
     bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 
-    -- Lists all the references 
+    -- Lists all the references
     bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
 
     -- Displays a function's signature information
@@ -71,4 +88,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
   end
 })
-
