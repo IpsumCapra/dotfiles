@@ -6,7 +6,13 @@ vim.opt.expandtab = true   -- Use spaces instead of tabs
 vim.opt.smartindent = true -- Smart indentation
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.opt.foldtext = ''
+
+function _G.customFoldText()
+  return vim.fn.getline(vim.v.foldstart) .. '...' .. vim.fn.getline(vim.v.foldend):gsub("^%s*", "")
+end
+
+vim.opt.foldtext = 'v:lua.customFoldText()'
+vim.opt.fillchars = 'fold: '
 vim.opt.foldlevel = 99
 
 vim.opt.wrap = false
